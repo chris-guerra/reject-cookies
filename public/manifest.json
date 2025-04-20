@@ -3,7 +3,7 @@
   "name": "Reject Cookies",
   "version": "0.0.1",
   "description": "Automatically rejects cookie popups on websites",
-  "permissions": ["activeTab", "scripting", "sidePanel", "tabs"],
+  "permissions": ["activeTab", "sidePanel", "tabs"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
