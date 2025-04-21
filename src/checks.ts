@@ -6,3 +6,7 @@ export const checkForUserCentrics = (): boolean => !!document.getElementById('us
 export const checkForDidomi = (): boolean =>
   !!document.getElementById('didomi-popup') || !!document.getElementById('didomi-host');
 export const checkForTrustArc = (): boolean => !!document.getElementById('truste-consent-track');
+export const checkForCookieYes = (): boolean =>
+  !!document.querySelector<HTMLDivElement>('.cky-consent-container');
+export const checkForDrCookie = (): boolean =>
+  !!document.getElementById('dr_cookie_banner_container');

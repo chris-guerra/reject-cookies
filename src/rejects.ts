@@ -95,3 +95,26 @@ export const closeOrRejectTrustArc = () => {
   }
   return false;
 };
+
+export const closeOrRejectCookieYes = () => {
+  const rejectButton = document.querySelector<HTMLButtonElement>('[data-cky-tag="reject-button"]');
+  if (rejectButton) {
+    rejectButton.click();
+    return true;
+  }
+  const banner = document.querySelector<HTMLDivElement>('.cky-consent-container');
+  if (banner) {
+    banner.remove();
+    return true;
+  }
+  return false;
+};
+
+export const closeOrRejectDrCookie = () => {
+  const rejectbtn = document.getElementById('cc-deny-01');
+  if (rejectbtn) {
+    rejectbtn.click();
+    return true;
+  }
+  return false;
+};

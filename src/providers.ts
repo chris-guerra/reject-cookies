@@ -1,13 +1,17 @@
 import {
   checkForCookieBot,
+  checkForCookieYes,
   checkForDidomi,
+  checkForDrCookie,
   checkForOneTrust,
   checkForTranscend,
   checkForTrustArc,
   checkForUserCentrics,
 } from './checks';
 import {
+  closeOrRejectCookieYes,
   closeOrRejectDidomi,
+  closeOrRejectDrCookie,
   closeOrRejectOneTrust,
   closeOrRejectTrustArc,
   closeTranscend,
@@ -27,6 +31,12 @@ export const commonCookiePopupChecks: CookiePopupCheck[] = [
     name: 'transcend',
     check: checkForTranscend,
     rejectOrClose: closeTranscend,
+    successful: false,
+  },
+  {
+    name: 'cookieyes',
+    check: checkForCookieYes,
+    rejectOrClose: closeOrRejectCookieYes,
     successful: false,
   },
   {
@@ -51,6 +61,12 @@ export const commonCookiePopupChecks: CookiePopupCheck[] = [
     name: 'trustarc',
     check: checkForTrustArc,
     rejectOrClose: closeOrRejectTrustArc,
+    successful: false,
+  },
+  {
+    name: 'dr',
+    check: checkForDrCookie,
+    rejectOrClose: closeOrRejectDrCookie,
     successful: false,
   },
 ];

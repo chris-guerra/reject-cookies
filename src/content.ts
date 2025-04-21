@@ -12,6 +12,8 @@ function findAndClickRejectButtons(): void {
   commonCookiePopupChecks.forEach(({ check, rejectOrClose, successful }) => {
     if (check() && !successful) {
       successful = rejectOrClose();
+      // assume that there is only one cookie consent provider and we can exit
+      return;
     }
   });
 
