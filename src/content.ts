@@ -4,7 +4,7 @@ const MAX_ATTEMPTS = 5;
 let currentAttempt = 0;
 
 // Function to find and click reject buttons
-function findAndClickRejectButtons(): void {
+const findAndClickRejectButtons = () => {
   if (currentAttempt > MAX_ATTEMPTS) {
     return;
   }
@@ -18,7 +18,7 @@ function findAndClickRejectButtons(): void {
   });
 
   currentAttempt++;
-}
+};
 
 // Run the functions when the page loads
 document.addEventListener('DOMContentLoaded', () => {
