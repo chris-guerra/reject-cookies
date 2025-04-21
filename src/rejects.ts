@@ -4,22 +4,7 @@ export const closeOrRejectOneTrust = () => {
     rejectButton.click();
     return true;
   }
-  // when there is no reject button, there is another flow where we may need to open a separate pop up
-  const openToReject = document.getElementById('onetrust-pc-btn-handler');
-  if (openToReject) {
-    openToReject.click();
 
-    const preferenceCenter = document.getElementById('onetrust-pc-sdk');
-    if (preferenceCenter) {
-      const refuseAll = preferenceCenter.querySelector<HTMLButtonElement>(
-        '.ot-pc-refuse-all-handler'
-      );
-      if (refuseAll) {
-        refuseAll.click();
-        return true;
-      }
-    }
-  }
   const consentSDK = document.getElementById('onetrust-consent-sdk');
   if (consentSDK) {
     consentSDK.remove();
