@@ -6,6 +6,7 @@ import {
   checkForOneTrust,
   checkForTranscend,
   checkForTrustArc,
+  checkForUCGDPR,
   checkForUserCentrics,
 } from './checks';
 import {
@@ -16,6 +17,7 @@ import {
   closeOrRejectTrustArc,
   closeTranscend,
   rejectCookieBot,
+  rejectOrCloseUCGDPR,
   rejectUserCentrics,
 } from './rejects';
 import { CookiePopupCheck } from './types';
@@ -67,6 +69,12 @@ export const commonCookiePopupChecks: CookiePopupCheck[] = [
     name: 'dr',
     check: checkForDrCookie,
     rejectOrClose: closeOrRejectDrCookie,
+    successful: false,
+  },
+  {
+    name: 'uc-gdpr',
+    check: checkForUCGDPR,
+    rejectOrClose: rejectOrCloseUCGDPR,
     successful: false,
   },
 ];
