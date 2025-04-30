@@ -39,6 +39,14 @@ export const rejectCookieBot = () => {
 
 // UserCentrics is running their popup in a shadow DOM, that is open
 export const rejectUserCentrics = () => {
+  const rejected = rejectUserCentricsPrimaryFlow();
+  if (rejected) {
+    return true;
+  }
+  return rejectUserCentricsSecondaryFlow();
+};
+
+const rejectUserCentricsPrimaryFlow = () => {
   const shadowDOMHost = document.getElementById('usercentrics-root');
   if (!shadowDOMHost) {
     return false;
@@ -51,7 +59,38 @@ export const rejectUserCentrics = () => {
     rejectBtn.click();
     return true;
   }
-  return false;
+  shadowDOMHost.remove();
+  return true;
+};
+
+const rejectUserCentricsSecondaryFlow = () => {
+  const shadowDOMHost = document.getElementById('usercentrics-cmp-ui');
+  if (!shadowDOMHost) {
+    return false;
+  }
+
+  const rejectBtn = shadowDOMHost.shadowRoot?.getElementById('deny');
+  if (rejectBtn) {
+    rejectBtn.click();
+    return true;
+  }
+  shadowDOMHost.remove();
+  return true;
+};
+
+export const rejectOrCloseUCGDPR = () => {
+  const popup = document.getElementById('uc-gdpr-notification');
+  if (!popup) {
+    return false;
+  }
+
+  const rejectBtn = document.getElementById('uc-reject-gdpr');
+  if (rejectBtn) {
+    rejectBtn.click();
+    return true;
+  }
+  popup.remove();
+  return true;
 };
 
 export const closeOrRejectDidomi = () => {
