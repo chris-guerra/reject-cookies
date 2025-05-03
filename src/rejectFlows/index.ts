@@ -1,3 +1,9 @@
+import {
+  rejectUserCentricsPrimaryFlow,
+  rejectUserCentricsSecondaryFlow,
+  rejectUserCentricsTertiaryFlow,
+} from './userCentrics';
+
 export const closeOrRejectOneTrust = () => {
   const rejectButton = document.getElementById('onetrust-reject-all-handler');
   if (rejectButton) {
@@ -39,43 +45,15 @@ export const rejectCookieBot = () => {
 
 // UserCentrics is running their popup in a shadow DOM, that is open
 export const rejectUserCentrics = () => {
-  const rejected = rejectUserCentricsPrimaryFlow();
+  let rejected = rejectUserCentricsPrimaryFlow();
   if (rejected) {
     return true;
   }
-  return rejectUserCentricsSecondaryFlow();
-};
-
-const rejectUserCentricsPrimaryFlow = () => {
-  const shadowDOMHost = document.getElementById('usercentrics-root');
-  if (!shadowDOMHost) {
-    return false;
-  }
-
-  const rejectBtn = shadowDOMHost.shadowRoot?.querySelector<HTMLButtonElement>(
-    '[data-testid="uc-deny-all-button"]'
-  );
-  if (rejectBtn) {
-    rejectBtn.click();
+  rejected = rejectUserCentricsSecondaryFlow();
+  if (rejected) {
     return true;
   }
-  shadowDOMHost.remove();
-  return true;
-};
-
-const rejectUserCentricsSecondaryFlow = () => {
-  const shadowDOMHost = document.getElementById('usercentrics-cmp-ui');
-  if (!shadowDOMHost) {
-    return false;
-  }
-
-  const rejectBtn = shadowDOMHost.shadowRoot?.getElementById('deny');
-  if (rejectBtn) {
-    rejectBtn.click();
-    return true;
-  }
-  shadowDOMHost.remove();
-  return true;
+  return rejectUserCentricsTertiaryFlow();
 };
 
 export const rejectOrCloseUCGDPR = () => {
@@ -153,6 +131,45 @@ export const closeOrRejectDrCookie = () => {
   const rejectbtn = document.getElementById('cc-deny-01');
   if (rejectbtn) {
     rejectbtn.click();
+    return true;
+  }
+  return false;
+};
+
+export const closeOrRejectCC = () => {
+  const rejectButton = document.getElementById('c-s-bn');
+  if (rejectButton) {
+    rejectButton.click();
+    return true;
+  }
+  const popUp = document.getElementById('cc--main');
+  if (popUp) {
+    popUp.remove();
+    return true;
+  }
+  return false;
+};
+
+export const closeOrRejectGeneric = () => {
+  const rejectBtn = document.querySelector<HTMLButtonElement>(
+    '[data-testid="gdpr-banner-decline-button"]'
+  );
+  if (rejectBtn) {
+    rejectBtn.click();
+    return true;
+  }
+  const popUp = document.getElementById('gdpr-banner-container');
+  if (popUp) {
+    popUp.remove();
+    return true;
+  }
+  return false;
+};
+
+export const closeOrRejectTrustee = () => {
+  const popUp = document.getElementById('truste-consent-track');
+  if (popUp) {
+    popUp.remove();
     return true;
   }
   return false;

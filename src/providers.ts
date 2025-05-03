@@ -1,25 +1,31 @@
 import {
+  checkForCC,
   checkForCookieBot,
   checkForCookieYes,
   checkForDidomi,
   checkForDrCookie,
+  checkForGeneric,
   checkForOneTrust,
   checkForTranscend,
   checkForTrustArc,
+  checkForTrustee,
   checkForUCGDPR,
   checkForUserCentrics,
 } from './checks';
 import {
+  closeOrRejectCC,
   closeOrRejectCookieYes,
   closeOrRejectDidomi,
   closeOrRejectDrCookie,
+  closeOrRejectGeneric,
   closeOrRejectOneTrust,
   closeOrRejectTrustArc,
+  closeOrRejectTrustee,
   closeTranscend,
   rejectCookieBot,
   rejectOrCloseUCGDPR,
   rejectUserCentrics,
-} from './rejects';
+} from './rejectFlows';
 import { CookiePopupCheck } from './types';
 
 export const commonCookiePopupChecks: CookiePopupCheck[] = [
@@ -75,6 +81,24 @@ export const commonCookiePopupChecks: CookiePopupCheck[] = [
     name: 'uc-gdpr',
     check: checkForUCGDPR,
     rejectOrClose: rejectOrCloseUCGDPR,
+    successful: false,
+  },
+  {
+    name: 'cc',
+    check: checkForCC,
+    rejectOrClose: closeOrRejectCC,
+    successful: false,
+  },
+  {
+    name: 'generic',
+    check: checkForGeneric,
+    rejectOrClose: closeOrRejectGeneric,
+    successful: false,
+  },
+  {
+    name: 'trustee',
+    check: checkForTrustee,
+    rejectOrClose: closeOrRejectTrustee,
     successful: false,
   },
 ];
