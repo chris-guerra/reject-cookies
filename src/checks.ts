@@ -13,3 +13,6 @@ export const checkForCookieYes = (): boolean =>
 export const checkForDrCookie = (): boolean =>
   !!document.getElementById('dr_cookie_banner_container');
 export const checkForUCGDPR = (): boolean => !!document.getElementById('uc-gdpr-notification');
+export const checkForCC = (): boolean => !!document.getElementById('cc--main');
+export const checkForGeneric = (): boolean => !!document.getElementById('gdpr-banner-container');
+export const checkForTrustee = (): boolean => !!document.getElementById('truste-consent-track');
