@@ -174,3 +174,32 @@ export const closeOrRejectTrustee = () => {
   }
   return false;
 };
+
+export const closeOrRejectCmplz = () => {
+  const rejectButton = document.querySelector<HTMLButtonElement>('.cmplz-deny');
+  if (rejectButton) {
+    rejectButton.click();
+    return true;
+  }
+  const popUp = document.getElementById('cmplz-cookiebanner-container');
+  if (popUp) {
+    popUp.remove();
+    return true;
+  }
+  return false;
+};
+
+export const closeOrRejectACookie = () => {
+  const rejectButton = document.getElementById('a-cookie--confirmation-reject');
+  if (rejectButton) {
+    rejectButton.click();
+    return true;
+  }
+
+  const popUp = document.querySelector<HTMLDivElement>('.a-cookie');
+  if (popUp) {
+    popUp.remove();
+    return true;
+  }
+  return false;
+};
