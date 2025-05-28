@@ -1,5 +1,7 @@
 import {
+  checkForACookie,
   checkForCC,
+  checkForCmplz,
   checkForCookieBot,
   checkForCookieYes,
   checkForDidomi,
@@ -13,7 +15,9 @@ import {
   checkForUserCentrics,
 } from './checks';
 import {
+  closeOrRejectACookie,
   closeOrRejectCC,
+  closeOrRejectCmplz,
   closeOrRejectCookieYes,
   closeOrRejectDidomi,
   closeOrRejectDrCookie,
@@ -99,6 +103,18 @@ export const commonCookiePopupChecks: CookiePopupCheck[] = [
     name: 'trustee',
     check: checkForTrustee,
     rejectOrClose: closeOrRejectTrustee,
+    successful: false,
+  },
+  {
+    name: 'cmplz',
+    check: checkForCmplz,
+    rejectOrClose: closeOrRejectCmplz,
+    successful: false,
+  },
+  {
+    name: 'acookie',
+    check: checkForACookie,
+    rejectOrClose: closeOrRejectACookie,
     successful: false,
   },
 ];

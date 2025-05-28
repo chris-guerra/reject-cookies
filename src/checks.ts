@@ -16,3 +16,6 @@ export const checkForUCGDPR = (): boolean => !!document.getElementById('uc-gdpr-
 export const checkForCC = (): boolean => !!document.getElementById('cc--main');
 export const checkForGeneric = (): boolean => !!document.getElementById('gdpr-banner-container');
 export const checkForTrustee = (): boolean => !!document.getElementById('truste-consent-track');
+export const checkForCmplz = (): boolean =>
+  !!document.getElementById('cmplz-cookiebanner-container');
+export const checkForACookie = (): boolean => !!document.getElementById('a-cookie--message');
